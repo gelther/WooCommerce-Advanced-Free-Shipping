@@ -14,12 +14,12 @@ class Wafs_Free_Shipping_Method extends WC_Shipping_Method {
 	 */
 	public function __construct() {
 
-		$this->id                	= 'advanced_free_shipping';
-		$this->title  				= __( 'Free Shipping (configurable per rate)', 'woocommerce-advanced-free-shipping' );
-		$this->method_title  		= __( 'Advanced Free Shipping', 'woocommerce-advanced-free-shipping' );
-		$this->method_description 	= __( 'Configure WooCommerce Advanced Free Shipping' );
+		$this->id                 = 'advanced_free_shipping';
+		$this->title              = __( 'Free Shipping (configurable per rate)', 'woocommerce-advanced-free-shipping' );
+		$this->method_title       = __( 'Advanced Free Shipping', 'woocommerce-advanced-free-shipping' );
+		$this->method_description = __( 'Configure WooCommerce Advanced Free Shipping' );
 
-		$this->matched_methods	 	= $this->wafs_match_methods();
+		$this->matched_methods = $this->wafs_match_methods();
 
 		$this->init();
 
@@ -38,8 +38,8 @@ class Wafs_Free_Shipping_Method extends WC_Shipping_Method {
 		$this->init_form_fields();
 		$this->init_settings();
 
-		$this->enabled 			= $this->get_option( 'enabled' );
-		$this->hide_shipping    = $this->get_option( 'hide_other_shipping' );
+		$this->enabled       = $this->get_option( 'enabled' );
+		$this->hide_shipping = $this->get_option( 'hide_other_shipping' );
 
 		// Save settings in admin if you have any defined
 		add_action( 'woocommerce_update_options_shipping_' . $this->id, array( $this, 'process_admin_options' ) );
@@ -90,8 +90,8 @@ class Wafs_Free_Shipping_Method extends WC_Shipping_Method {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param array $condition_groups All condition groups set by the user.
-	 * @return BOOL True if one of the conditions groups matches.
+	 * @param  array $condition_groups All condition groups set by the user.
+	 * @return BOOL                    True if one of the conditions groups matches.
 	 */
 	public function wafs_match_conditions( $condition_groups = array() ) {
 
@@ -159,7 +159,7 @@ class Wafs_Free_Shipping_Method extends WC_Shipping_Method {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return string
+	 * @return string 
 	 */
 	public function generate_conditions_table_html() {
 
@@ -182,8 +182,8 @@ class Wafs_Free_Shipping_Method extends WC_Shipping_Method {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param 	mixed $key 	Key.
-	 * @return 	bool		Validation.
+	 * @param  mixed $key Key.
+	 * @return bool       Validation.
 	 */
 	public function validate_additional_conditions_table_field( $key ) {
 		return false;
@@ -197,14 +197,14 @@ class Wafs_Free_Shipping_Method extends WC_Shipping_Method {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param mixed $package
+	 * @param mixed $package 
 	 */
 	public function calculate_shipping( $package ) {
 
 		if ( false == $this->matched_methods || 'no' == $this->enabled ) return;
 
-		$method_args 	= get_post_meta( $this->matched_methods, '_wafs_shipping_method', true );
-		$label          = ! empty( $method_args['shipping_title'] ) ? $method_args['shipping_title'] : __( 'Free Shipping', 'woocommerce-advanced-free-shipping' );
+		$method_args = get_post_meta( $this->matched_methods, '_wafs_shipping_method', true );
+		$label       = ! empty( $method_args['shipping_title'] ) ? $method_args['shipping_title'] : __( 'Free Shipping', 'woocommerce-advanced-free-shipping' );
 
 		$rate = array(
 			'id'       => $this->id,
@@ -225,8 +225,8 @@ class Wafs_Free_Shipping_Method extends WC_Shipping_Method {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param array $available_methods
-	 * @return array
+	 * @param  array $available_methods 
+	 * @return array                    
 	 */
 	public function hide_all_shipping_when_free_is_available( $available_methods ) {
 
