@@ -8,10 +8,10 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *
  * @since 1.0.0
  *
- * @param int 		$id 			Throw in the condition ID.
- * @param int 		$group 			Condition group ID.
- * @param string 	$condition 		Condition where the value input is used for.
- * @param string 	$current_value 	Current chosen slug.
+ * @param int    $id            Throw in the condition ID.
+ * @param int    $group         Condition group ID.
+ * @param string $condition     Condition where the value input is used for.
+ * @param string $current_value Current chosen slug.
  */
 function wafs_condition_values( $id, $group = 0, $condition = 'subtotal', $current_value = '' ) {
 
@@ -217,7 +217,7 @@ function wafs_condition_values( $id, $group = 0, $condition = 'subtotal', $curre
 						if ( ! is_array( $value ) ) :
 							?><option value='<?php echo esc_attr( $key ); ?>' <?php selected( $key, $current_value ); ?>><?php echo esc_html( $value ); ?></option><?php
 						else :
-							?><optgroup label='<?php echo $key ?>'><?php
+							?><optgroup label='<?php echo $key; ?>'><?php
 								foreach ( $value as $k => $v ) :
 									?><option value='<?php echo esc_attr( $k ); ?>' <?php selected( $k, $current_value ); ?>><?php echo esc_html( $v ); ?></option><?php
 								endforeach;
