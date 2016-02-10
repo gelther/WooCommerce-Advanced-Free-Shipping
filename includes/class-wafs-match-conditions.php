@@ -52,10 +52,10 @@ class WAFS_Match_Conditions {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param 	bool 	$match		Current match value.
-	 * @param 	string 	$operator	Operator selected by the user in the condition row.
-	 * @param 	mixed 	$value		Value given by the user in the condition row.
-	 * @return 	BOOL 				Matching result, TRUE if results match, otherwise FALSE.
+	 * @param  bool   $match    Current match value.
+	 * @param  string $operator Operator selected by the user in the condition row.
+	 * @param  mixed  $value    Value given by the user in the condition row.
+	 * @return BOOL             Matching result, TRUE if results match, otherwise FALSE.
 	 */
 	public function wafs_match_condition_subtotal( $match, $operator, $value ) {
 
@@ -83,10 +83,10 @@ class WAFS_Match_Conditions {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param 	bool 	$match		Current match value.
-	 * @param 	string 	$operator	Operator selected by the user in the condition row.
-	 * @param 	mixed 	$value		Value given by the user in the condition row.
-	 * @return 	BOOL 				Matching result, TRUE if results match, otherwise FALSE.
+	 * @param  bool   $match    Current match value.
+	 * @param  string $operator Operator selected by the user in the condition row.
+	 * @param  mixed  $value    Value given by the user in the condition row.
+	 * @return BOOL             Matching result, TRUE if results match, otherwise FALSE.
 	 */
 	public function wafs_match_condition_subtotal_ex_tax( $match, $operator, $value ) {
 
@@ -114,10 +114,10 @@ class WAFS_Match_Conditions {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param 	bool 	$match		Current match value.
-	 * @param 	string 	$operator	Operator selected by the user in the condition row.
-	 * @param 	mixed 	$value		Value given by the user in the condition row.
-	 * @return 	BOOL 				Matching result, TRUE if results match, otherwise FALSE.
+	 * @param  bool   $match    Current match value.
+	 * @param  string $operator Operator selected by the user in the condition row.
+	 * @param  mixed  $value    Value given by the user in the condition row.
+	 * @return BOOL             Matching result, TRUE if results match, otherwise FALSE.
 	 */
 	public function wafs_match_condition_tax( $match, $operator, $value ) {
 
@@ -148,10 +148,10 @@ class WAFS_Match_Conditions {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param 	bool 	$match		Current match value.
-	 * @param 	string 	$operator	Operator selected by the user in the condition row.
-	 * @param 	mixed 	$value		Value given by the user in the condition row.
-	 * @return 	BOOL 				Matching result, TRUE if results match, otherwise FALSE.
+	 * @param  bool   $match    Current match value.
+	 * @param  string $operator Operator selected by the user in the condition row.
+	 * @param  mixed  $value    Value given by the user in the condition row.
+	 * @return BOOL             Matching result, TRUE if results match, otherwise FALSE.
 	 */
 	public function wafs_match_condition_quantity( $match, $operator, $value ) {
 
@@ -179,10 +179,10 @@ class WAFS_Match_Conditions {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param 	bool 	$match		Current match value.
-	 * @param 	string 	$operator	Operator selected by the user in the condition row.
-	 * @param 	mixed 	$value		Value given by the user in the condition row.
-	 * @return 	BOOL 				Matching result, TRUE if results match, otherwise FALSE.
+	 * @param  bool   $match    Current match value.
+	 * @param  string $operator Operator selected by the user in the condition row.
+	 * @param  mixed  $value    Value given by the user in the condition row.
+	 * @return BOOL             Matching result, TRUE if results match, otherwise FALSE.
 	 */
 	public function wafs_match_condition_contains_product( $match, $operator, $value ) {
 
@@ -210,10 +210,10 @@ class WAFS_Match_Conditions {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param 	bool 	$match		Current match value.
-	 * @param 	string 	$operator	Operator selected by the user in the condition row.
-	 * @param 	mixed 	$value		Value given by the user in the condition row.
-	 * @return 	BOOL 				Matching result, TRUE if results match, otherwise FALSE.
+	 * @param  bool   $match    Current match value.
+	 * @param  string $operator Operator selected by the user in the condition row.
+	 * @param  mixed  $value    Value given by the user in the condition row.
+	 * @return BOOL             Matching result, TRUE if results match, otherwise FALSE.
 	 */
 	public function wafs_match_condition_coupon( $match, $operator, $value ) {
 
@@ -237,10 +237,10 @@ class WAFS_Match_Conditions {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param 	bool 	$match		Current match value.
-	 * @param 	string 	$operator	Operator selected by the user in the condition row.
-	 * @param 	mixed 	$value		Value given by the user in the condition row.
-	 * @return 	BOOL 				Matching result, TRUE if results match, otherwise FALSE.
+	 * @param  bool   $match    Current match value.
+	 * @param  string $operator Operator selected by the user in the condition row.
+	 * @param  mixed  $value    Value given by the user in the condition row.
+	 * @return BOOL             Matching result, TRUE if results match, otherwise FALSE.
 	 */
 	public function wafs_match_condition_weight( $match, $operator, $value ) {
 
@@ -283,8 +283,8 @@ class WAFS_Match_Conditions {
 
 		foreach ( WC()->cart->cart_contents as $product ) :
 
-			$id 		= ! empty( $product['variation_id'] ) ? $product['variation_id'] : $product['product_id'];
-			$product 	= get_product( $id );
+			$id      = ! empty( $product['variation_id'] ) ? $product['variation_id'] : $product['product_id'];
+			$product = get_product( $id );
 
 			if ( $operator == '==' ) :
 				if ( $product->get_shipping_class() == $value ) :
@@ -315,10 +315,10 @@ class WAFS_Match_Conditions {
 	 *
 	 * @since 1.0.2; $value may contain single or comma (,) separated zipcodes.
 	 *
-	 * @param 	bool 	$match		Current match value.
-	 * @param 	string 	$operator	Operator selected by the user in the condition row.
-	 * @param 	mixed 	$value		Value given by the user in the condition row.
-	 * @return 	BOOL 				Matching result, TRUE if results match, otherwise FALSE.
+	 * @param  bool   $match    Current match value.
+	 * @param  string $operator Operator selected by the user in the condition row.
+	 * @param  mixed  $value    Value given by the user in the condition row.
+	 * @return BOOL             Matching result, TRUE if results match, otherwise FALSE.
 	 */
 	public function wafs_match_condition_zipcode( $match, $operator, $value ) {
 
@@ -358,10 +358,10 @@ class WAFS_Match_Conditions {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param 	bool 	$match		Current match value.
-	 * @param 	string 	$operator	Operator selected by the user in the condition row.
-	 * @param 	mixed 	$value		Value given by the user in the condition row.
-	 * @return 	BOOL 				Matching result, TRUE if results match, otherwise FALSE.
+	 * @param  bool   $match    Current match value.
+	 * @param  string $operator Operator selected by the user in the condition row.
+	 * @param  mixed  $value    Value given by the user in the condition row.
+	 * @return BOOL             Matching result, TRUE if results match, otherwise FALSE.
 	 */
 	public function wafs_match_condition_city( $match, $operator, $value ) {
 
@@ -385,10 +385,10 @@ class WAFS_Match_Conditions {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param 	bool 	$match		Current match value.
-	 * @param 	string 	$operator	Operator selected by the user in the condition row.
-	 * @param 	mixed 	$value		Value given by the user in the condition row.
-	 * @return 	BOOL 				Matching result, TRUE if results match, otherwise FALSE.
+	 * @param  bool   $match    Current match value.
+	 * @param  string $operator Operator selected by the user in the condition row.
+	 * @param  mixed  $value    Value given by the user in the condition row.
+	 * @return BOOL             Matching result, TRUE if results match, otherwise FALSE.
 	 */
 	public function wafs_match_condition_state( $match, $operator, $value ) {
 
@@ -414,10 +414,10 @@ class WAFS_Match_Conditions {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param 	bool 	$match		Current match value.
-	 * @param 	string 	$operator	Operator selected by the user in the condition row.
-	 * @param 	mixed 	$value		Value given by the user in the condition row.
-	 * @return 	BOOL 				Matching result, TRUE if results match, otherwise FALSE.
+	 * @param  bool   $match    Current match value.
+	 * @param  string $operator Operator selected by the user in the condition row.
+	 * @param  mixed  $value    Value given by the user in the condition row.
+	 * @return BOOL             Matching result, TRUE if results match, otherwise FALSE.
 	 */
 	public function wafs_match_condition_country( $match, $operator, $value ) {
 
@@ -442,10 +442,10 @@ class WAFS_Match_Conditions {
 	 * @since 1.0.0
 	 * @global object $current_user Current user object for capabilities.
 	 *
-	 * @param 	bool 	$match		Current match value.
-	 * @param 	string 	$operator	Operator selected by the user in the condition row.
-	 * @param 	mixed 	$value		Value given by the user in the condition row.
-	 * @return 	BOOL 				Matching result, TRUE if results match, otherwise FALSE.
+	 * @param  bool   $match    Current match value.
+	 * @param  string $operator Operator selected by the user in the condition row.
+	 * @param  mixed  $value    Value given by the user in the condition row.
+	 * @return BOOL             Matching result, TRUE if results match, otherwise FALSE.
 	 */
 	public function wafs_match_condition_role( $match, $operator, $value ) {
 
@@ -474,10 +474,10 @@ class WAFS_Match_Conditions {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param 	bool 	$match		Current match value.
-	 * @param 	string 	$operator	Operator selected by the user in the condition row.
-	 * @param 	mixed 	$value		Value given by the user in the condition row.
-	 * @return 	BOOL 				Matching result, TRUE if results match, otherwise FALSE.
+	 * @param  bool   $match    Current match value.
+	 * @param  string $operator Operator selected by the user in the condition row.
+	 * @param  mixed  $value    Value given by the user in the condition row.
+	 * @return BOOL             Matching result, TRUE if results match, otherwise FALSE.
 	 */
 	public function wafs_match_condition_width( $match, $operator, $value ) {
 
@@ -517,10 +517,10 @@ class WAFS_Match_Conditions {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param 	bool 	$match		Current match value.
-	 * @param 	string 	$operator	Operator selected by the user in the condition row.
-	 * @param 	mixed 	$value		Value given by the user in the condition row.
-	 * @return 	BOOL 				Matching result, TRUE if results match, otherwise FALSE.
+	 * @param  bool   $match    Current match value.
+	 * @param  string $operator Operator selected by the user in the condition row.
+	 * @param  mixed  $value    Value given by the user in the condition row.
+	 * @return BOOL             Matching result, TRUE if results match, otherwise FALSE.
 	 */
 	public function wafs_match_condition_height( $match, $operator, $value ) {
 
@@ -560,10 +560,10 @@ class WAFS_Match_Conditions {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param 	bool 	$match		Current match value.
-	 * @param 	string 	$operator	Operator selected by the user in the condition row.
-	 * @param 	mixed 	$value		Value given by the user in the condition row.
-	 * @return 	BOOL 				Matching result, TRUE if results match, otherwise FALSE.
+	 * @param  bool   $match    Current match value.
+	 * @param  string $operator Operator selected by the user in the condition row.
+	 * @param  mixed  $value    Value given by the user in the condition row.
+	 * @return BOOL             Matching result, TRUE if results match, otherwise FALSE.
 	 */
 	public function wafs_match_condition_length( $match, $operator, $value ) {
 
@@ -603,10 +603,10 @@ class WAFS_Match_Conditions {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param 	bool 	$match		Current match value.
-	 * @param 	string 	$operator	Operator selected by the user in the condition row.
-	 * @param 	mixed 	$value		Value given by the user in the condition row.
-	 * @return 	BOOL 				Matching result, TRUE if results match, otherwise FALSE.
+	 * @param  bool   $match    Current match value.
+	 * @param  string $operator Operator selected by the user in the condition row.
+	 * @param  mixed  $value    Value given by the user in the condition row.
+	 * @return BOOL             Matching result, TRUE if results match, otherwise FALSE.
 	 */
 	public function wafs_match_condition_stock( $match, $operator, $value ) {
 
@@ -615,7 +615,7 @@ class WAFS_Match_Conditions {
 		foreach ( WC()->cart->cart_contents as $product ) :
 
 			$product_id = ! empty( $product['variation_id'] ) ? $product['variation_id'] : $product['product_id'];
-			$stock[] = get_post_meta( $product_id, '_stock', true );
+			$stock[]    = get_post_meta( $product_id, '_stock', true );
 
 		endforeach;
 
@@ -643,10 +643,10 @@ class WAFS_Match_Conditions {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param 	bool 	$match		Current match value.
-	 * @param 	string 	$operator	Operator selected by the user in the condition row.
-	 * @param 	mixed 	$value		Value given by the user in the condition row.
-	 * @return 	BOOL 				Matching result, TRUE if results match, otherwise FALSE.
+	 * @param  bool   $match    Current match value.
+	 * @param  string $operator Operator selected by the user in the condition row.
+	 * @param  mixed  $value    Value given by the user in the condition row.
+	 * @return BOOL             Matching result, TRUE if results match, otherwise FALSE.
 	 */
 	public function wafs_match_condition_stock_status( $match, $operator, $value ) {
 
@@ -683,10 +683,10 @@ class WAFS_Match_Conditions {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param 	bool 	$match		Current match value.
-	 * @param 	string 	$operator	Operator selected by the user in the condition row.
-	 * @param 	mixed 	$value		Value given by the user in the condition row.
-	 * @return 	BOOL 				Matching result, TRUE if results match, otherwise FALSE.
+	 * @param  bool   $match    Current match value.
+	 * @param  string $operator Operator selected by the user in the condition row.
+	 * @param  mixed  $value    Value given by the user in the condition row.
+	 * @return BOOL             Matching result, TRUE if results match, otherwise FALSE.
 	 */
 	public function wafs_match_condition_category( $match, $operator, $value ) {
 
