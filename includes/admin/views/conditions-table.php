@@ -34,8 +34,8 @@ $method_conditions = get_posts( array( 'posts_per_page' => '-1', 'post_type' => 
 				foreach ( $method_conditions as $method_condition ) :
 
 					$method_details = get_post_meta( $method_condition->ID, '_wafs_shipping_method', true );
-					$conditions 	= get_post_meta( $method_condition->ID, '_wafs_shipping_method_conditions', true );
-					$alt 			= ( $i++ ) % 2 == 0 ? 'alternate' : '';
+					$conditions     = get_post_meta( $method_condition->ID, '_wafs_shipping_method_conditions', true );
+					$alt            = ( $i++ ) % 2 == 0 ? 'alternate' : '';
 
 					?><tr class='<?php echo $alt; ?>'>
 						<td>
