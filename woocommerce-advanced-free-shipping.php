@@ -5,7 +5,7 @@
  * Donate link: 	http://jeroensormani.com/donate/
  * Description: 	WooCommerce Advanced Free Shipping is an plugin which allows you to set up advanced free shipping conditions.
  * Version: 		1.0.8
- * Author: 		E	Jeroen Sormani
+ * Author: 		H	Jeroen Sormani
  * Author URI: 		http://jeroensormani.com/
  * Text Domain: 	woocommerce-advanced-free-shipping
 
