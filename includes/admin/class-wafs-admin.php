@@ -1,5 +1,5 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if (! defined( 'ABSPATH' )) exit; // Exit if accessed directly
 
 /**
  * Class WAFS_Admin.
@@ -105,7 +105,7 @@ class WAFS_Admin {
 
 		global $parent_file, $submenu_file, $post_type;
 
-		if ( 'wafs' == $post_type ) :
+		if ('wafs' == $post_type) :
 			$parent_file = 'woocommerce';
 			$submenu_file = 'wc-settings';
 		endif;
