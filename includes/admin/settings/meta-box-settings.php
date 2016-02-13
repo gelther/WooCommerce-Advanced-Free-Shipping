@@ -9,7 +9,7 @@
  * @version		1.0.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if (! defined( 'ABSPATH' )) exit; // Exit if accessed directly
 
 wp_nonce_field( 'wafs_settings_meta_box', 'wafs_settings_meta_box_nonce' );
 
