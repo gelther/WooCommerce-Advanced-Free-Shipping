@@ -1,5 +1,5 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if (! defined( 'ABSPATH' )) exit; // Exit if accessed directly
 /**
  * Class WAFS_post_type.
  *
@@ -108,7 +108,7 @@ class WAFS_post_type {
 			10 => __( 'Free shipping method draft updated.', 'woocommerce-advanced-free-shipping' ),
 		);
 
-		if ( 'wafs' == $post_type ) :
+		if ('wafs' == $post_type) :
 			$overview_link = admin_url( 'admin.php?page=wc-settings&tab=shipping&section=wafs_free_shipping_method' );
 
 			$overview = sprintf( ' <a href="%s">%s</a>', esc_url( $overview_link ), __( 'Return to overview.', 'woocommerce-advanced-free-shipping' ) );
@@ -183,15 +183,15 @@ class WAFS_post_type {
 	 */
 	public function save_condition_meta( $post_id ) {
 
-		if ( ! isset( $_POST['wafs_conditions_meta_box_nonce'] ) || ! wp_verify_nonce( $_POST['wafs_conditions_meta_box_nonce'], 'wafs_conditions_meta_box' ) ) :
+		if (! isset( $_POST['wafs_conditions_meta_box_nonce'] ) || ! wp_verify_nonce( $_POST['wafs_conditions_meta_box_nonce'], 'wafs_conditions_meta_box' )) :
 			return $post_id;
 		endif;
 
-		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) :
+		if (defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE) :
 			return $post_id;
 		endif;
 
-		if ( ! current_user_can( 'manage_woocommerce' ) ) :
+		if (! current_user_can( 'manage_woocommerce' )) :
 			return $post_id;
 		endif;
 
@@ -211,15 +211,15 @@ class WAFS_post_type {
 	 */
 	public function save_meta( $post_id ) {
 
-		if ( ! isset( $_POST['wafs_settings_meta_box_nonce'] ) || ! wp_verify_nonce( $_POST['wafs_settings_meta_box_nonce'], 'wafs_settings_meta_box' ) ) :
+		if (! isset( $_POST['wafs_settings_meta_box_nonce'] ) || ! wp_verify_nonce( $_POST['wafs_settings_meta_box_nonce'], 'wafs_settings_meta_box' )) :
 			return $post_id;
 		endif;
 
-		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) :
+		if (defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE) :
 			return $post_id;
 		endif;
 
-		if ( ! current_user_can( 'manage_woocommerce' ) ) :
+		if (! current_user_can( 'manage_woocommerce' )) :
 			return $post_id;
 		endif;
 
@@ -241,9 +241,9 @@ class WAFS_post_type {
 
 		$screen = get_current_screen();
 
-		if( 'edit-wafs' == $screen->id ) :
+		if('edit-wafs' == $screen->id) :
 
-			if( isset( $_GET['trashed'] ) &&  intval( $_GET['trashed'] ) > 0 ) :
+			if(isset( $_GET['trashed'] ) &&  intval( $_GET['trashed'] ) > 0) :
 
 				wp_redirect( admin_url( '/admin.php?page=wc-settings&tab=shipping&section=wafs_free_shipping_method' ) );
 				exit();
