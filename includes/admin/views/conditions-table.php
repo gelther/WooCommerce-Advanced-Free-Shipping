@@ -9,7 +9,7 @@
  * @version		1.0.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if (! defined( 'ABSPATH' )) exit; // Exit if accessed directly
 
 $method_conditions = get_posts( array( 'posts_per_page' => '-1', 'post_type' => 'wafs', 'post_status' => array( 'draft', 'publish' ) ) );
 
@@ -31,7 +31,7 @@ $method_conditions = get_posts( array( 'posts_per_page' => '-1', 'post_type' => 
 			<tbody><?php
 
 				$i = 0;
-				foreach ( $method_conditions as $method_condition ) :
+				foreach ($method_conditions as $method_condition) :
 
 					$method_details = get_post_meta( $method_condition->ID, '_wafs_shipping_method', true );
 					$conditions 	= get_post_meta( $method_condition->ID, '_wafs_shipping_method_conditions', true );
@@ -65,7 +65,7 @@ $method_conditions = get_posts( array( 'posts_per_page' => '-1', 'post_type' => 
 
 				endforeach;
 
-				if ( empty( $method_conditions ) ) :
+				if (empty( $method_conditions )) :
 
 					?><tr>
 						<td colspan='2'><?php _e( 'There are no Free Shipping methods. Yet...', 'woocommerce-advanced-free-shipping' ); ?></td>
