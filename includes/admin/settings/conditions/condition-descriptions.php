@@ -1,5 +1,5 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if (! defined( 'ABSPATH' )) exit; // Exit if accessed directly
 
 /**
  * Descriptions.
@@ -27,7 +27,7 @@ function wafs_condition_description( $condition ) {
 	$descriptions = apply_filters( 'wafs_descriptions', $descriptions );
 
 	// Display description
-	if ( ! isset( $descriptions[ $condition ] ) ) :
+	if (! isset( $descriptions[ $condition ] )) :
 		?><span class='wafs-description no-description'></span><?php
 		return;
 	endif;
