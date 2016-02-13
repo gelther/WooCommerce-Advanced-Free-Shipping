@@ -1,5 +1,5 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if (! defined( 'ABSPATH' )) exit; // Exit if accessed directly
 
 /**
  * Create value input.
@@ -18,7 +18,7 @@ function wafs_condition_values( $id, $group = 0, $condition = 'subtotal', $curre
 	// Defaults
 	$values = array( 'placeholder' => '', 'min' => '', 'max' => '', 'field' => 'text', 'options' => array() );
 
-	switch ( $condition ) :
+	switch ($condition) :
 
 		default:
 		case 'subtotal' :
@@ -50,7 +50,7 @@ function wafs_condition_values( $id, $group = 0, $condition = 'subtotal', $curre
 			$values['field'] = 'select';
 
 			$products = get_posts( array( 'posts_per_page' => '-1', 'post_type' => 'product', 'order' => 'asc', 'orderby' => 'title' ) );
-			foreach ( $products as $product ) :
+			foreach ($products as $product) :
 				$values['options'][$product->ID ] = $product->post_title;
 			endforeach;
 
@@ -74,7 +74,7 @@ function wafs_condition_values( $id, $group = 0, $condition = 'subtotal', $curre
 			$values['options'][''] 		= __( 'No shipping class', 'woocommerce' );
 
 			// Get all shipping classes
-			foreach ( get_terms( 'product_shipping_class', array( 'hide_empty' => false ) ) as $shipping_class ) :
+			foreach (get_terms( 'product_shipping_class', array( 'hide_empty' => false ) ) as $shipping_class) :
 				$values['options'][ $shipping_class->slug ] = $shipping_class->name;
 			endforeach;
 
@@ -100,12 +100,12 @@ function wafs_condition_values( $id, $group = 0, $condition = 'subtotal', $curre
 
 			$values['field'] = 'select';
 
-	        foreach ( WC()->countries->states as $country => $states ) :
+	        foreach (WC()->countries->states as $country => $states) :
 
-	            if ( empty( $states ) ) continue; // Don't show country if it has no states
-	            if ( ! array_key_exists( $country, WC()->countries->get_allowed_countries() ) ) continue; // Skip unallowed countries
+	            if (empty( $states )) continue; // Don't show country if it has no states
+	            if (! array_key_exists( $country, WC()->countries->get_allowed_countries() )) continue; // Skip unallowed countries
 
-	            foreach ( $states as $state_key => $state ) :
+	            foreach ($states as $state_key => $state) :
 	                $country_states[ WC()->countries->countries[ $country ] ][ $country . '_' . $state_key ] = $state;
 	            endforeach;
 
@@ -175,7 +175,7 @@ function wafs_condition_values( $id, $group = 0, $condition = 'subtotal', $curre
 			$values['field'] = 'select';
 
 			$categories = get_terms( 'product_cat', array( 'hide_empty' => false ) );
-			foreach ( $categories as $category ) :
+			foreach ($categories as $category) :
 				$values['options'][ $category->slug ] = $category->name;
 			endforeach;
 
@@ -188,7 +188,7 @@ function wafs_condition_values( $id, $group = 0, $condition = 'subtotal', $curre
 
 	?><span class='wafs-value-wrap wafs-value-wrap-<?php echo absint( $id ); ?>'><?php
 
-		switch ( $values['field'] ) :
+		switch ($values['field']) :
 
 			case 'text' :
 
@@ -212,13 +212,13 @@ function wafs_condition_values( $id, $group = 0, $condition = 'subtotal', $curre
 				?><select class='wafs-value' name='_wafs_shipping_method_conditions[<?php echo absint( $group ); ?>][<?php echo absint( $id ); ?>][value]'>
 
 					<option <?php selected( '', $current_value ); ?>><?php _e( 'Select option' , 'woocommerce-advanced-free-shipping' ); ?></option><?php
-					foreach ( $values['options'] as $key => $value ) :
+					foreach ($values['options'] as $key => $value) :
 
-						if ( ! is_array( $value ) ) :
+						if (! is_array( $value )) :
 							?><option value='<?php echo esc_attr( $key ); ?>' <?php selected( $key, $current_value ); ?>><?php echo esc_html( $value ); ?></option><?php
 						else :
 							?><optgroup label='<?php echo $key ?>'><?php
-								foreach ( $value as $k => $v ) :
+								foreach ($value as $k => $v) :
 									?><option value='<?php echo esc_attr( $k ); ?>' <?php selected( $k, $current_value ); ?>><?php echo esc_html( $v ); ?></option><?php
 								endforeach;
 							?></optgroup><?php
@@ -227,7 +227,7 @@ function wafs_condition_values( $id, $group = 0, $condition = 'subtotal', $curre
 
 					endforeach;
 
-					if ( empty( $values['options'] ) ) :
+					if (empty( $values['options'] )) :
 						?><option readonly disabled><?php
 							_e( 'There are no options available', 'woocommerce-advanced-free-shipping' );
 						?></option><?php
