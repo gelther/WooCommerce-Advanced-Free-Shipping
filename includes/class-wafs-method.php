@@ -1,7 +1,7 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if (! defined( 'ABSPATH' )) exit; // Exit if accessed directly
 
-if ( class_exists( 'Wafs_Free_Shipping_Method' ) ) return; // Stop if the class already exists
+if (class_exists( 'Wafs_Free_Shipping_Method' )) return; // Stop if the class already exists
 
 
 class Wafs_Free_Shipping_Method extends WC_Shipping_Method {
@@ -64,7 +64,7 @@ class Wafs_Free_Shipping_Method extends WC_Shipping_Method {
 		$methods = get_posts( array( 'posts_per_page' => '-1', 'post_type' => 'wafs' ) );
 
 		$matched_methods = '';
-		foreach ( $methods as $method ) :
+		foreach ($methods as $method) :
 
 			$condition_groups = get_post_meta( $method->ID, '_wafs_shipping_method_conditions', true );
 
@@ -72,7 +72,7 @@ class Wafs_Free_Shipping_Method extends WC_Shipping_Method {
 			$match = $this->wafs_match_conditions( $condition_groups );
 
 			// Add (single) match to parameter
-			if ( true == $match ) :
+			if (true == $match) :
 				$matched_methods = $method->ID;
 			endif;
 
@@ -95,24 +95,24 @@ class Wafs_Free_Shipping_Method extends WC_Shipping_Method {
 	 */
 	public function wafs_match_conditions( $condition_groups = array() ) {
 
-		if ( empty( $condition_groups ) ) return false;
+		if (empty( $condition_groups )) return false;
 
-		foreach ( $condition_groups as $condition_group => $conditions ) :
+		foreach ($condition_groups as $condition_group => $conditions) :
 
 			$match_condition_group = true;
 
-			foreach ( $conditions as $condition ) :
+			foreach ($conditions as $condition) :
 
 				$match = apply_filters( 'wafs_match_condition_' . $condition['condition'], false, $condition['operator'], $condition['value'] );
 
-				if ( false == $match ) :
+				if (false == $match) :
 					$match_condition_group = false;
 				endif;
 
 			endforeach;
 
 			// return true if one condition group matches
-			if ( true == $match_condition_group ) :
+			if (true == $match_condition_group) :
 				return true;
 			endif;
 
@@ -201,7 +201,7 @@ class Wafs_Free_Shipping_Method extends WC_Shipping_Method {
 	 */
 	public function calculate_shipping( $package ) {
 
-		if ( false == $this->matched_methods || 'no' == $this->enabled ) return;
+		if (false == $this->matched_methods || 'no' == $this->enabled) return;
 
 		$method_args 	= get_post_meta( $this->matched_methods, '_wafs_shipping_method', true );
 		$label          = ! empty( $method_args['shipping_title'] ) ? $method_args['shipping_title'] : __( 'Free Shipping', 'woocommerce-advanced-free-shipping' );
@@ -230,13 +230,13 @@ class Wafs_Free_Shipping_Method extends WC_Shipping_Method {
 	 */
 	public function hide_all_shipping_when_free_is_available( $available_methods ) {
 
-		if ( 'no' == $this->hide_shipping ) return $available_methods;
+		if ('no' == $this->hide_shipping) return $available_methods;
 
-	 	if ( isset( $available_methods['advanced_free_shipping'] ) ) :
+	 	if (isset( $available_methods['advanced_free_shipping'] )) :
 
 			return array( 'advanced_free_shipping' => $available_methods['advanced_free_shipping'] );
 
-	 	elseif ( isset( $available_methods['free_shipping'] ) ) :
+	 	elseif (isset( $available_methods['free_shipping'] )) :
 
 	 		return array( 'free_shipping' => $available_methods['free_shipping'] );
 
