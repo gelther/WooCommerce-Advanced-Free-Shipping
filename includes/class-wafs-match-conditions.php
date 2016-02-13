@@ -1,5 +1,5 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if (! defined( 'ABSPATH' )) exit; // Exit if accessed directly
 /**
  * Class WAFS_Match_Conditions
  *
@@ -59,15 +59,15 @@ class WAFS_Match_Conditions {
 	 */
 	public function wafs_match_condition_subtotal( $match, $operator, $value ) {
 
-		if ( ! isset( WC()->cart ) ) return $match;
+		if (! isset( WC()->cart )) return $match;
 
-		if ( '==' == $operator ) :
+		if ('==' == $operator) :
 			$match = ( WC()->cart->subtotal == $value );
-		elseif ( '!=' == $operator ) :
+		elseif ('!=' == $operator) :
 			$match = ( WC()->cart->subtotal != $value );
-		elseif ( '>=' == $operator ) :
+		elseif ('>=' == $operator) :
 			$match = ( WC()->cart->subtotal >= $value );
-		elseif ( '<=' == $operator ) :
+		elseif ('<=' == $operator) :
 			$match = ( WC()->cart->subtotal <= $value );
 		endif;
 
@@ -90,15 +90,15 @@ class WAFS_Match_Conditions {
 	 */
 	public function wafs_match_condition_subtotal_ex_tax( $match, $operator, $value ) {
 
-		if ( ! isset( WC()->cart ) ) return $match;
+		if (! isset( WC()->cart )) return $match;
 
-		if ( '==' == $operator ) :
+		if ('==' == $operator) :
 			$match = ( WC()->cart->subtotal_ex_tax == $value );
-		elseif ( '!=' == $operator ) :
+		elseif ('!=' == $operator) :
 			$match = ( WC()->cart->subtotal_ex_tax != $value );
-		elseif ( '>=' == $operator ) :
+		elseif ('>=' == $operator) :
 			$match = ( WC()->cart->subtotal_ex_tax >= $value );
-		elseif ( '<=' == $operator ) :
+		elseif ('<=' == $operator) :
 			$match = ( WC()->cart->subtotal_ex_tax <= $value );
 		endif;
 
@@ -121,17 +121,17 @@ class WAFS_Match_Conditions {
 	 */
 	public function wafs_match_condition_tax( $match, $operator, $value ) {
 
-		if ( ! isset( WC()->cart ) ) return $match;
+		if (! isset( WC()->cart )) return $match;
 
 		$taxes = array_sum( (array) WC()->cart->taxes );
 
-		if ( '==' == $operator ) :
+		if ('==' == $operator) :
 			$match = ( $taxes == $value );
-		elseif ( '!=' == $operator ) :
+		elseif ('!=' == $operator) :
 			$match = ( $taxes != $value );
-		elseif ( '>=' == $operator ) :
+		elseif ('>=' == $operator) :
 			$match = ( $taxes >= $value );
-		elseif ( '<=' == $operator ) :
+		elseif ('<=' == $operator) :
 			$match = ( $taxes <= $value );
 		endif;
 
@@ -155,15 +155,15 @@ class WAFS_Match_Conditions {
 	 */
 	public function wafs_match_condition_quantity( $match, $operator, $value ) {
 
-		if ( ! isset( WC()->cart ) ) return $match;
+		if (! isset( WC()->cart )) return $match;
 
-		if ( '==' == $operator ) :
+		if ('==' == $operator) :
 			$match = ( WC()->cart->cart_contents_count == $value );
-		elseif ( '!=' == $operator ) :
+		elseif ('!=' == $operator) :
 			$match = ( WC()->cart->cart_contents_count != $value );
-		elseif ( '>=' == $operator ) :
+		elseif ('>=' == $operator) :
 			$match = ( WC()->cart->cart_contents_count >= $value );
-		elseif ( '<=' == $operator ) :
+		elseif ('<=' == $operator) :
 			$match = ( WC()->cart->cart_contents_count <= $value );
 		endif;
 
@@ -186,15 +186,15 @@ class WAFS_Match_Conditions {
 	 */
 	public function wafs_match_condition_contains_product( $match, $operator, $value ) {
 
-		if ( ! isset( WC()->cart ) || empty( WC()->cart->cart_contents ) ) return $match;
+		if (! isset( WC()->cart ) || empty( WC()->cart->cart_contents )) return $match;
 
-		foreach ( WC()->cart->cart_contents as $product ) :
+		foreach (WC()->cart->cart_contents as $product) :
 			$product_ids[] = $product['product_id'];
 		endforeach;
 
-		if ( '==' == $operator ) :
+		if ('==' == $operator) :
 			$match = ( in_array( $value, $product_ids ) );
-		elseif ( '!=' == $operator ) :
+		elseif ('!=' == $operator) :
 			$match = ( ! in_array( $value, $product_ids ) );
 		endif;
 
@@ -217,11 +217,11 @@ class WAFS_Match_Conditions {
 	 */
 	public function wafs_match_condition_coupon( $match, $operator, $value ) {
 
-		if ( ! isset( WC()->cart ) ) return $match;
+		if (! isset( WC()->cart )) return $match;
 
-		if ( '==' == $operator ) :
+		if ('==' == $operator) :
 			$match = ( in_array( $value, WC()->cart->applied_coupons ) );
-		elseif ( '!=' == $operator ) :
+		elseif ('!=' == $operator) :
 			$match = ( ! in_array( $value, WC()->cart->applied_coupons ) );
 		endif;
 
@@ -244,15 +244,15 @@ class WAFS_Match_Conditions {
 	 */
 	public function wafs_match_condition_weight( $match, $operator, $value ) {
 
-		if ( ! isset( WC()->cart ) ) return $match;
+		if (! isset( WC()->cart )) return $match;
 
-		if ( '==' == $operator ) :
+		if ('==' == $operator) :
 			$match = ( WC()->cart->cart_contents_weight == $value );
-		elseif ( '!=' == $operator ) :
+		elseif ('!=' == $operator) :
 			$match = ( WC()->cart->cart_contents_weight != $value );
-		elseif ( '>=' == $operator ) :
+		elseif ('>=' == $operator) :
 			$match = ( WC()->cart->cart_contents_weight >= $value );
-		elseif ( '<=' == $operator ) :
+		elseif ('<=' == $operator) :
 			$match = ( WC()->cart->cart_contents_weight <= $value );
 		endif;
 
@@ -274,24 +274,24 @@ class WAFS_Match_Conditions {
 	 * @return 	BOOL 				Matching result, TRUE if results match, otherwise FALSE.	 */
 	public function wafs_match_condition_contains_shipping_class( $match, $operator, $value ) {
 
-		if ( ! isset( WC()->cart ) ) return $match;
+		if (! isset( WC()->cart )) return $match;
 
-		if ( $operator == '!=' ) :
+		if ($operator == '!=') :
 			// True until proven false
 			$match = true;
 		endif;
 
-		foreach ( WC()->cart->cart_contents as $product ) :
+		foreach (WC()->cart->cart_contents as $product) :
 
 			$id 		= ! empty( $product['variation_id'] ) ? $product['variation_id'] : $product['product_id'];
 			$product 	= get_product( $id );
 
-			if ( $operator == '==' ) :
-				if ( $product->get_shipping_class() == $value ) :
+			if ($operator == '==') :
+				if ($product->get_shipping_class() == $value) :
 					return true;
 				endif;
-			elseif ( $operator == '!=' ) :
-				if ( $product->get_shipping_class() == $value ) :
+			elseif ($operator == '!=') :
+				if ($product->get_shipping_class() == $value) :
 					return false;
 				endif;
 			endif;
@@ -322,27 +322,27 @@ class WAFS_Match_Conditions {
 	 */
 	public function wafs_match_condition_zipcode( $match, $operator, $value ) {
 
-		if ( ! isset( WC()->customer ) ) return $match;
+		if (! isset( WC()->customer )) return $match;
 
-		if ( '==' == $operator ) :
+		if ('==' == $operator) :
 
-			if ( preg_match( '/\, ?/', $value ) ) :
+			if (preg_match( '/\, ?/', $value )) :
 				$match = ( in_array( (int) WC()->customer->get_shipping_postcode(), array_map( 'intval', explode( ',', $value ) ) ) );
 			else :
 				$match = ( (int) WC()->customer->get_shipping_postcode() == (int) $value );
 			endif;
 
-		elseif ( '!=' == $operator ) :
+		elseif ('!=' == $operator) :
 
-			if ( preg_match( '/\, ?/', $value ) ) :
+			if (preg_match( '/\, ?/', $value )) :
 				$match = ( ! in_array( (int) WC()->customer->get_shipping_postcode(), array_map( 'intval', explode( ',', $value ) ) ) );
 			else :
 				$match = ( (int) WC()->customer->get_shipping_postcode() != (int) $value );
 			endif;
 
-		elseif ( '>=' == $operator ) :
+		elseif ('>=' == $operator) :
 			$match = ( (int) WC()->customer->get_shipping_postcode() >= (int) $value );
-		elseif ( '<=' == $operator ) :
+		elseif ('<=' == $operator) :
 			$match = ( (int) WC()->customer->get_shipping_postcode() <= (int) $value );
 		endif;
 
@@ -365,11 +365,11 @@ class WAFS_Match_Conditions {
 	 */
 	public function wafs_match_condition_city( $match, $operator, $value ) {
 
-		if ( ! isset( WC()->customer ) ) return $match;
+		if (! isset( WC()->customer )) return $match;
 
-		if ( '==' == $operator ) :
+		if ('==' == $operator) :
 			$match = ( preg_match( "/^$value$/i", WC()->customer->get_shipping_city() ) );
-		elseif ( '!=' == $operator ) :
+		elseif ('!=' == $operator) :
 			$match = ( ! preg_match( "/^$value$/i", WC()->customer->get_shipping_city() ) );
 		endif;
 
@@ -392,13 +392,13 @@ class WAFS_Match_Conditions {
 	 */
 	public function wafs_match_condition_state( $match, $operator, $value ) {
 
-		if ( ! isset( WC()->customer ) ) return $match;
+		if (! isset( WC()->customer )) return $match;
 
 		$state = WC()->customer->get_shipping_country() . '_' . WC()->customer->get_shipping_state();
 
-		if ( '==' == $operator ) :
+		if ('==' == $operator) :
 			$match = ( $state == $value );
-		elseif ( '!=' == $operator ) :
+		elseif ('!=' == $operator) :
 			$match = ( $state != $value );
 		endif;
 
@@ -421,11 +421,11 @@ class WAFS_Match_Conditions {
 	 */
 	public function wafs_match_condition_country( $match, $operator, $value ) {
 
-		if ( ! isset( WC()->customer ) ) return $match;
+		if (! isset( WC()->customer )) return $match;
 
-		if ( '==' == $operator ) :
+		if ('==' == $operator) :
 			$match = ( preg_match( "/^$value$/i", WC()->customer->get_shipping_country() ) );
-		elseif ( '!=' == $operator ) :
+		elseif ('!=' == $operator) :
 			$match = ( ! preg_match( "/^$value$/i", WC()->customer->get_shipping_country() ) );
 		endif;
 
@@ -451,9 +451,9 @@ class WAFS_Match_Conditions {
 
 		global $current_user;
 
-		if ( '==' == $operator ) :
+		if ('==' == $operator) :
 			$match = ( array_key_exists( $value, $current_user->caps ) );
-		elseif ( '!=' == $operator ) :
+		elseif ('!=' == $operator) :
 			$match = ( ! array_key_exists( $value, $current_user->caps ) );
 		endif;
 
@@ -481,11 +481,11 @@ class WAFS_Match_Conditions {
 	 */
 	public function wafs_match_condition_width( $match, $operator, $value ) {
 
-		if ( ! isset( WC()->cart ) || empty( WC()->cart->cart_contents ) ) return $match;
+		if (! isset( WC()->cart ) || empty( WC()->cart->cart_contents )) return $match;
 
-		foreach ( WC()->cart->cart_contents as $product ) :
+		foreach (WC()->cart->cart_contents as $product) :
 
-			if ( true == $product['data']->variation_has_width ) :
+			if (true == $product['data']->variation_has_width) :
 				$width[] = ( get_post_meta( $product['data']->variation_id, '_width', true ) );
 			else :
 				$width[] = ( get_post_meta( $product['product_id'], '_width', true ) );
@@ -495,13 +495,13 @@ class WAFS_Match_Conditions {
 
 		$max_width = max( (array) $width );
 
-		if ( '==' == $operator ) :
+		if ('==' == $operator) :
 			$match = ( $max_width == $value );
-		elseif ( '!=' == $operator ) :
+		elseif ('!=' == $operator) :
 			$match = ( $max_width != $value );
-		elseif ( '>=' == $operator ) :
+		elseif ('>=' == $operator) :
 			$match = ( $max_width >= $value );
-		elseif ( '<=' == $operator ) :
+		elseif ('<=' == $operator) :
 			$match = ( $max_width <= $value );
 		endif;
 
@@ -524,11 +524,11 @@ class WAFS_Match_Conditions {
 	 */
 	public function wafs_match_condition_height( $match, $operator, $value ) {
 
-		if ( ! isset( WC()->cart ) || empty( WC()->cart->cart_contents ) ) return $match;
+		if (! isset( WC()->cart ) || empty( WC()->cart->cart_contents )) return $match;
 
-		foreach ( WC()->cart->cart_contents as $product ) :
+		foreach (WC()->cart->cart_contents as $product) :
 
-			if ( true == $product['data']->variation_has_height ) :
+			if (true == $product['data']->variation_has_height) :
 				$height[] = ( get_post_meta( $product['data']->variation_id, '_height', true ) );
 			else :
 				$height[] = ( get_post_meta( $product['product_id'], '_height', true ) );
@@ -538,13 +538,13 @@ class WAFS_Match_Conditions {
 
 		$max_height = max( $height );
 
-		if ( '==' == $operator ) :
+		if ('==' == $operator) :
 			$match = ( $max_height == $value );
-		elseif ( '!=' == $operator ) :
+		elseif ('!=' == $operator) :
 			$match = ( $max_height != $value );
-		elseif ( '>=' == $operator ) :
+		elseif ('>=' == $operator) :
 			$match = ( $max_height >= $value );
-		elseif ( '<=' == $operator ) :
+		elseif ('<=' == $operator) :
 			$match = ( $max_height <= $value );
 		endif;
 
@@ -567,11 +567,11 @@ class WAFS_Match_Conditions {
 	 */
 	public function wafs_match_condition_length( $match, $operator, $value ) {
 
-		if ( ! isset( WC()->cart ) || empty( WC()->cart->cart_contents ) ) return $match;
+		if (! isset( WC()->cart ) || empty( WC()->cart->cart_contents )) return $match;
 
-		foreach ( WC()->cart->cart_contents as $product ) :
+		foreach (WC()->cart->cart_contents as $product) :
 
-			if ( true == $product['data']->variation_has_length ) :
+			if (true == $product['data']->variation_has_length) :
 				$length[] = ( get_post_meta( $product['data']->variation_id, '_length', true ) );
 			else :
 				$length[] = ( get_post_meta( $product['product_id'], '_length', true ) );
@@ -581,13 +581,13 @@ class WAFS_Match_Conditions {
 
 		$max_length = max( $length );
 
-		if ( '==' == $operator ) :
+		if ('==' == $operator) :
 			$match = ( $max_length == $value );
-		elseif ( '!=' == $operator ) :
+		elseif ('!=' == $operator) :
 			$match = ( $max_length != $value );
-		elseif ( '>=' == $operator ) :
+		elseif ('>=' == $operator) :
 			$match = ( $max_length >= $value );
-		elseif ( '<=' == $operator ) :
+		elseif ('<=' == $operator) :
 			$match = ( $max_length <= $value );
 		endif;
 
@@ -610,9 +610,9 @@ class WAFS_Match_Conditions {
 	 */
 	public function wafs_match_condition_stock( $match, $operator, $value ) {
 
-		if ( ! isset( WC()->cart ) || empty( WC()->cart->cart_contents ) ) return $match;
+		if (! isset( WC()->cart ) || empty( WC()->cart->cart_contents )) return $match;
 
-		foreach ( WC()->cart->cart_contents as $product ) :
+		foreach (WC()->cart->cart_contents as $product) :
 
 			$product_id = ! empty( $product['variation_id'] ) ? $product['variation_id'] : $product['product_id'];
 			$stock[] = get_post_meta( $product_id, '_stock', true );
@@ -621,13 +621,13 @@ class WAFS_Match_Conditions {
 
 		$min_stock = min( $stock );
 
-		if ( '==' == $operator ) :
+		if ('==' == $operator) :
 			$match = ( $min_stock == $value );
-		elseif ( '!=' == $operator ) :
+		elseif ('!=' == $operator) :
 			$match = ( $min_stock != $value );
-		elseif ( '>=' == $operator ) :
+		elseif ('>=' == $operator) :
 			$match = ( $min_stock >= $value );
-		elseif ( '<=' == $operator ) :
+		elseif ('<=' == $operator) :
 			$match = ( $min_stock <= $value );
 		endif;
 
@@ -650,21 +650,21 @@ class WAFS_Match_Conditions {
 	 */
 	public function wafs_match_condition_stock_status( $match, $operator, $value ) {
 
-		if ( ! isset( WC()->cart ) ) return $match;
+		if (! isset( WC()->cart )) return $match;
 
-		if ( '==' == $operator ) :
+		if ('==' == $operator) :
 
 			$match = true;
-			foreach ( WC()->cart->cart_contents as $product ) :
-				if ( get_post_meta( $product['product_id'], '_stock_status', true ) != $value )
+			foreach (WC()->cart->cart_contents as $product) :
+				if (get_post_meta( $product['product_id'], '_stock_status', true ) != $value)
 					$match = false;
 			endforeach;
 
-		elseif ( '!=' == $operator ) :
+		elseif ('!=' == $operator) :
 
 			$match = true;
-			foreach ( WC()->cart->cart_contents as $product ) :
-				if ( get_post_meta( $product['product_id'], '_stock_status', true ) == $value )
+			foreach (WC()->cart->cart_contents as $product) :
+				if (get_post_meta( $product['product_id'], '_stock_status', true ) == $value)
 					$match = false;
 			endforeach;
 
@@ -690,25 +690,25 @@ class WAFS_Match_Conditions {
 	 */
 	public function wafs_match_condition_category( $match, $operator, $value ) {
 
-		if ( ! isset( WC()->cart ) ) return $match;
+		if (! isset( WC()->cart )) return $match;
 
 		$match = true;
 
-		if ( '==' == $operator ) :
+		if ('==' == $operator) :
 
-			foreach ( WC()->cart->cart_contents as $product ) :
+			foreach (WC()->cart->cart_contents as $product) :
 
-				if ( ! has_term( $value, 'product_cat', $product['product_id'] ) ) :
+				if (! has_term( $value, 'product_cat', $product['product_id'] )) :
 					$match = false;
 				endif;
 
 			endforeach;
 
-		elseif ( '!=' == $operator ) :
+		elseif ('!=' == $operator) :
 
-			foreach ( WC()->cart->cart_contents as $product ) :
+			foreach (WC()->cart->cart_contents as $product) :
 
-				if ( has_term( $value, 'product_cat', $product['product_id'] ) ) :
+				if (has_term( $value, 'product_cat', $product['product_id'] )) :
 					$match = false;
 				endif;
 
