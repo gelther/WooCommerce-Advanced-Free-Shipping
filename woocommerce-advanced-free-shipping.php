@@ -1,4 +1,4 @@
-<?PHP
+<?PHPCCcCccc
 /*
  * Plugin Name: 	Woocommerce Advanced Free Shipping
  * Plugin URI: 		https://wordpress.org/plugins/woocommerce-advanced-free-shipping/
