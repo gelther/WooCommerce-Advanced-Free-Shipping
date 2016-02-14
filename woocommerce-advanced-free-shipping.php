@@ -83,7 +83,7 @@ class WooCommerce_Advanced_Free_Shipping {
 
 		// Check if WooCommerce is active
 		if ( !in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) :
-			if ( ! is_plugin_active_for_network( 'woocommerce/woocommerce.php' ) ) :
+			if ( !is_plugin_active_for_network( 'woocommerce/woocommerce.php' ) ) :
 				return;
 			endif;
 		endif;
