@@ -1,5 +1,5 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if (! defined( 'ABSPATH' )) exit; // Exit if accessed directly
 
 /**
  * Create condition dropdown.
@@ -49,11 +49,11 @@ function wafs_condition_conditions( $id, $group = 0, $current_value = 'subtotal'
 		<select class='wafs-condition' data-group='<?php echo absint( $group ); ?>' data-id='<?php echo absint( $id ); ?>'
 			name='_wafs_shipping_method_conditions[<?php echo absint( $group ); ?>][<?php echo absint( $id ); ?>][condition]'><?php
 
-			foreach ( $conditions as $option_group => $values ) :
+			foreach ($conditions as $option_group => $values) :
 
 				?><optgroup label='<?php echo esc_attr( $option_group ); ?>'><?php
 
-					foreach ( $values as $key => $value ) :
+					foreach ($values as $key => $value) :
 						?><option value='<?php echo esc_attr( $key ); ?>' <?php selected( $key, $current_value ); ?>><?php echo esc_html( $value ); ?></option><?php
 					endforeach;
 
