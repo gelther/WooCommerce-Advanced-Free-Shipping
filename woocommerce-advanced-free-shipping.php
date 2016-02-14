@@ -49,7 +49,7 @@ class WooCommerce_Advanced_Free_Shipping {
 	 * @since 1.0.4
 	 * @var string $version Plugin version number.
 	 */
-	public $version = '1.0.8';
+	public $version = '1.0.9';
 
 
 	/**
