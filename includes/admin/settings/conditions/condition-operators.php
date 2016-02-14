@@ -1,5 +1,5 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if (! defined( 'ABSPATH' )) exit; // Exit if accessed directly
 
 /**
  * Create operator dropdown.
@@ -27,7 +27,7 @@ function wafs_condition_operator( $id, $group = 0, $current_value = '==' ) {
 
 		<select id='' class='wafs-operator' name='_wafs_shipping_method_conditions[<?php echo absint( $group ); ?>][<?php echo absint( $id ); ?>][operator]'>
 
-			<?php foreach ( $operators as $key => $value ) :
+			<?php foreach ($operators as $key => $value) :
 
 				?><option value='<?php echo esc_attr( $key ); ?>' <?php selected( $key, $current_value ); ?>><?php echo esc_html( $value ); ?></option><?php
 
