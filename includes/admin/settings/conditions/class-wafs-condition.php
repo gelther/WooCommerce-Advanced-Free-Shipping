@@ -10,7 +10,7 @@
  * @version		1.0.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if (! defined( 'ABSPATH' )) exit; // Exit if accessed directly
 
 class WAFS_Condition {
 
@@ -78,7 +78,7 @@ class WAFS_Condition {
 		 $this->operator 	= $operator;
 		 $this->value 		= $value;
 
-		 if ( ! $id )
+		 if (! $id)
 		 	$this->id = rand();
 
 		 $this->wafs_create_object();
