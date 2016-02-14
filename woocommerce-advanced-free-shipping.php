@@ -29,7 +29,7 @@
  *     along with WordPress. If not, see <http://www.gnu.org/licenses/>.
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /**
  * Class Woocommerce_Advanced_Free_Shipping.
