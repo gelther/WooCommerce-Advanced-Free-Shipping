@@ -5,7 +5,7 @@
  * Donate link: 	http://jeroensormani.com/donate/
  * Description: 	WooCommerce Advanced Free Shipping is an plugin which allows you to set up advanced free shipping conditions.
  * Version: 		1.0.8
- * Author: 		Jeroen Sormani
+ * Author: 		BP Jeroen Sormani
  * Author URI: 		http://jeroensormani.com/
  * Text Domain: 	woocommerce-advanced-free-shipping
 
@@ -29,7 +29,7 @@
  *     along with WordPress. If not, see <http://www.gnu.org/licenses/>.
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if (! defined( 'ABSPATH' )) exit; // Exit if accessed directly
 
 /**
  * Class Woocommerce_Advanced_Free_Shipping.
@@ -78,12 +78,12 @@ class WooCommerce_Advanced_Free_Shipping {
 	 */
 	public function __construct() {
 
-		if ( ! function_exists( 'is_plugin_active_for_network' ) )
+		if (! function_exists( 'is_plugin_active_for_network' ))
 			require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
 
 		// Check if WooCommerce is active
-		if ( ! in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) :
-			if ( ! is_plugin_active_for_network( 'woocommerce/woocommerce.php' ) ) :
+		if (! in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) )) :
+			if (! is_plugin_active_for_network( 'woocommerce/woocommerce.php' )) :
 				return;
 			endif;
 		endif;
@@ -105,7 +105,7 @@ class WooCommerce_Advanced_Free_Shipping {
 	 */
 	public static function instance() {
 
-		if ( is_null( self::$instance ) ) {
+		if (is_null( self::$instance )) {
 			self::$instance = new self();
 		}
 
@@ -153,7 +153,7 @@ class WooCommerce_Advanced_Free_Shipping {
 		/**
 		 * Admin class
 		 */
-		if ( is_admin() ) :
+		if (is_admin()) :
 			require_once plugin_dir_path( __FILE__ ) . '/includes/admin/class-wafs-admin.php';
 			$this->admin = new WAFS_Admin();
 		endif;
@@ -174,15 +174,15 @@ class WooCommerce_Advanced_Free_Shipping {
 		$db_version = get_option( 'wafs_plugin_version', '1.0.0' );
 
 		// Stop current version is up to date
-		if ( $db_version >= $this->version ) :
+		if ($db_version >= $this->version) :
 			return;
 		endif;
 
 		// Update functions for 1.0.3/1.0.5
-		if ( version_compare( '1.0.3', $db_version ) || version_compare( '1.0.5', $db_version ) ) :
+		if (version_compare( '1.0.3', $db_version ) || version_compare( '1.0.5', $db_version )) :
 
 			$wafs_method_settings = get_option( 'woocommerce_advanced_free_shipping_settings' );
-			if ( isset( $wafs_method_settings['hide_other_shipping_when_available'] ) ) :
+			if (isset( $wafs_method_settings['hide_other_shipping_when_available'] )) :
 				$wafs_method_settings['hide_other_shipping'] = $wafs_method_settings['hide_other_shipping_when_available'];
 				update_option( 'woocommerce_advanced_free_shipping_settings', $wafs_method_settings );
 			endif;
@@ -254,7 +254,7 @@ class WooCommerce_Advanced_Free_Shipping {
 	 */
 	public function wafs_add_shipping_method( $methods ) {
 
-		if ( class_exists( 'Wafs_Free_Shipping_Method' ) ) :
+		if (class_exists( 'Wafs_Free_Shipping_Method' )) :
 			$methods[] = 'Wafs_Free_Shipping_Method';
 		endif;
 
@@ -289,7 +289,7 @@ class WooCommerce_Advanced_Free_Shipping {
  *
  * @return object WooCommerce_Advanced_Free_Shipping class object.
  */
-if ( ! function_exists( 'WAFS' ) ) :
+if (! function_exists( 'WAFS' )) :
 
  	function WAFS() {
 		return WooCommerce_Advanced_Free_Shipping::instance();
