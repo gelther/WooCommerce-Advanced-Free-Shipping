@@ -29,7 +29,7 @@
  *     along with WordPress. If not, see <http://www.gnu.org/licenses/>.
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /**
  * Class Woocommerce_Advanced_Free_Shipping.
@@ -78,7 +78,7 @@ class WooCommerce_Advanced_Free_Shipping {
 	 */
 	public function __construct() {
 
-		if ( ! function_exists( 'is_plugin_active_for_network' ) )
+		if ( !function_exists( 'is_plugin_active_for_network' ) )
 			require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
 
 		// Check if WooCommerce is active
