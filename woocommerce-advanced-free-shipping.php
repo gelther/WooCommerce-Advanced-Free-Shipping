@@ -1,4 +1,4 @@
-<?PHP
+<?php
 /*
  * Plugin Name: 	Woocommerce Advanced Free Shipping
  * Plugin URI: 		https://wordpress.org/plugins/woocommerce-advanced-free-shipping/
@@ -78,8 +78,9 @@ class WooCommerce_Advanced_Free_Shipping {
 	 */
 	public function __construct() {
 
-		if ( ! function_exists( 'is_plugin_active_for_network' ) )
+		if ( ! function_exists( 'is_plugin_active_for_network' ) ) {
 			require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
+		}
 
 		// Check if WooCommerce is active
 		if ( ! in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) :
@@ -271,7 +272,9 @@ class WooCommerce_Advanced_Free_Shipping {
 	 * @since 1.0.0
 	 */
 	public function wafs_admin_enqueue_scripts() {
+
 		_deprecated_function( __FUNCTION__, '1.0.8', 'WAFS()->admin->admin_enqueue_script()' );
+
 	}
 
 
@@ -291,9 +294,12 @@ class WooCommerce_Advanced_Free_Shipping {
  */
 if ( ! function_exists( 'WAFS' ) ) :
 
- 	function WAFS() {
+	function WAFS() {
+
 		return WooCommerce_Advanced_Free_Shipping::instance();
+
 	}
+
 
 endif;
 
