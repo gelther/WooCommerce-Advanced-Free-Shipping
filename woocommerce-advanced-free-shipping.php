@@ -102,7 +102,7 @@ class WooCommerce_Advanced_Free_Shipping {
 	 *
 	 * @since 1.1.0
 	 *
-	 * @return object Instance of the class.
+	 * @return  object  Instance of the class.
 	 */
 	public static function instance() {
 
@@ -290,7 +290,7 @@ class WooCommerce_Advanced_Free_Shipping {
  *
  * @since 1.1.0
  *
- * @return object WooCommerce_Advanced_Free_Shipping class object.
+ * @return  object  WooCommerce_Advanced_Free_Shipping class object.
  */
 if ( ! function_exists( 'WAFS' ) ) :
 
