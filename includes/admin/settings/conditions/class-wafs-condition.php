@@ -1,4 +1,4 @@
-<?php
+<?PHP
 /**
  * Class WAFS_Condition.
  *
@@ -10,7 +10,7 @@
  * @version		1.0.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if( ! defined( "ABSPATH" ) ) exit; // Exit if accessed directly
 
 class WAFS_Condition {
 
@@ -71,19 +71,17 @@ class WAFS_Condition {
 	 * @since 1.0.0
 	 */
 	public function __construct( $id = null, $group = 0, $condition = null, $operator = null, $value = null ) {
-
 			$this->id        = $id;
 			$this->group     = $group;
 			$this->condition = $condition;
 			$this->operator  = $operator;
 			$this->value     = $value;
 
-			if ( ! $id ) {
+			if( ! $id ) {
 			$this->id = rand();
 			}
 
 			$this->wafs_create_object();
-
 	}
 
 
@@ -95,10 +93,9 @@ class WAFS_Condition {
 	 * @since 1.0.0
 	 */
 	public function wafs_create_object() {
+		?><div class='wafs-condition-wrap'><?PHP
 
-		?><div class='wafs-condition-wrap'><?php
-
-			do_action( 'wafs_before_condition', $this );
+			do_action( "wafs_before_condition", $this );
 
 			$this->wafs_condition_conditions();
 			$this->wafs_condition_operator();
@@ -109,10 +106,9 @@ class WAFS_Condition {
 
 			$this->wafs_condition_description();
 
-			do_action( 'wafs_after_condition', $this );
+			do_action( "wafs_after_condition", $this );
 
-		?></div><?php
-
+		?></div><?PHP
 	}
 
 
@@ -124,9 +120,7 @@ class WAFS_Condition {
 	 * @since 1.0.0
 	 */
 	public function wafs_condition_conditions() {
-
 		wafs_condition_conditions( $this->id, $this->group, $this->condition );
-
 	}
 
 
@@ -138,9 +132,7 @@ class WAFS_Condition {
 	 * @since 1.0.0
 	 */
 	public function wafs_condition_operator() {
-
 		wafs_condition_operator( $this->id, $this->group, $this->operator );
-
 	}
 
 
@@ -152,9 +144,7 @@ class WAFS_Condition {
 	 * @since 1.0.0
 	 */
 	public function wafs_condition_values() {
-
 		wafs_condition_values( $this->id, $this->group, $this->condition, $this->value );
-
 	}
 
 
@@ -166,11 +156,9 @@ class WAFS_Condition {
 	 * @since 1.0.0
 	 */
 	public function wafs_add_condition_button() {
-
 		?>
-		<a class='button condition-add' data-group='<?php echo absint( $this->group ); ?>' href='javascript:void(0);'>+</a>
-		<?php
-
+		<a class='button condition-add' data-group='<?PHP echo absint( $this->group ); ?>' href='javascript:void(0);'>+</a>
+		<?PHP
 	}
 
 
@@ -182,11 +170,9 @@ class WAFS_Condition {
 	 * @since 1.0.0
 	 */
 	public function wafs_remove_condition_button() {
-
 		?>
 		<a class='button condition-delete' href='javascript:void(0);'>-</a>
-		<?php
-
+		<?PHP
 	}
 
 
@@ -198,9 +184,7 @@ class WAFS_Condition {
 	 * @since 1.0.0
 	 */
 	public function wafs_condition_description() {
-
 		wafs_condition_description( $this->condition );
-
 	}
 
 
@@ -209,19 +193,19 @@ class WAFS_Condition {
 /**
  * Load condition keys dropdown.
  */
-require_once plugin_dir_path( __FILE__ ) . 'condition-conditions.php';
+require_once plugin_dir_path( __FILE__ ) . "condition-conditions.php";
 
 /**
  * Load condition operator dropdown.
  */
-require_once plugin_dir_path( __FILE__ ) . 'condition-operators.php';
+require_once plugin_dir_path( __FILE__ ) . "condition-operators.php";
 
 /**
  * Load condition value dropdown.
  */
-require_once plugin_dir_path( __FILE__ ) . 'condition-values.php';
+require_once plugin_dir_path( __FILE__ ) . "condition-values.php";
 
 /**
  * Load condition descriptions.
  */
-require_once plugin_dir_path( __FILE__ ) . 'condition-descriptions.php';
+require_once plugin_dir_path( __FILE__ ) . "condition-descriptions.php";
