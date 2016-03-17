@@ -57,7 +57,7 @@ class Wafs_Free_Shipping_Method extends WC_Shipping_Method {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return array Only the first matched method (since you won't need two free shipping).
+	 * @return  array  Only the first matched method (since you won't need two free shipping).
 	 */
 	public function wafs_match_methods() {
 
@@ -90,8 +90,8 @@ class Wafs_Free_Shipping_Method extends WC_Shipping_Method {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param  array $condition_groups All condition groups set by the user.
-	 * @return BOOL                    True if one of the conditions groups matches.
+	 * @param   array  $condition_groups  All condition groups set by the user.
+	 * @return  BOOL                      True if one of the conditions groups matches.
 	 */
 	public function wafs_match_conditions( $condition_groups = array() ) {
 
@@ -160,7 +160,7 @@ class Wafs_Free_Shipping_Method extends WC_Shipping_Method {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return string
+	 * @return  string
 	 */
 	public function generate_conditions_table_html() {
 
@@ -183,8 +183,8 @@ class Wafs_Free_Shipping_Method extends WC_Shipping_Method {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param  mixed $key Key.
-	 * @return bool       Validation.
+	 * @param   mixed  $key  Key.
+	 * @return  bool         Validation.
 	 */
 	public function validate_additional_conditions_table_field( $key ) {
 
@@ -200,7 +200,7 @@ class Wafs_Free_Shipping_Method extends WC_Shipping_Method {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param mixed $package
+	 * @param  mixed  $package
 	 */
 	public function calculate_shipping( $package ) {
 
@@ -228,8 +228,8 @@ class Wafs_Free_Shipping_Method extends WC_Shipping_Method {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param  array $available_methods
-	 * @return array
+	 * @param   array  $available_methods
+	 * @return  array
 	 */
 	public function hide_all_shipping_when_free_is_available( $available_methods ) {
 
