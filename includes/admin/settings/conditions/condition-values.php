@@ -1,5 +1,5 @@
-<?php
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+<?PHP
+if( ! defined( "ABSPATH" ) ) exit; // Exit if accessed directly
 
 /**
  * Create value input.
@@ -8,74 +8,73 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *
  * @since 1.0.0
  *
- * @param int    $id            Throw in the condition ID.
- * @param int    $group         Condition group ID.
- * @param string $condition     Condition where the value input is used for.
- * @param string $current_value Current chosen slug.
+ * @param  int     $id             Throw in the condition ID.
+ * @param  int     $group          Condition group ID.
+ * @param  string  $condition      Condition where the value input is used for.
+ * @param  string  $current_value  Current chosen slug.
  */
-function wafs_condition_values( $id, $group = 0, $condition = 'subtotal', $current_value = '' ) {
-
+function wafs_condition_values( $id, $group = 0, $condition = "subtotal", $current_value = "" ) {
 	// Defaults
-	$values = array( 'placeholder' => '', 'min' => '', 'max' => '', 'field' => 'text', 'options' => array() );
+	$values = array( "placeholder" => "", "min" => "", "max" => "", "field" => "text", "options" => array() );
 
-	switch ( $condition ) :
+	switch( $condition ) :
 
 		default:
-		case 'subtotal' :
+		case "subtotal" :
 
-			$values['field'] = 'number';
-
-		break;
-
-		case 'subtotal_ex_tax' :
-
-			$values['field'] = 'number';
+			$values["field"] = "number";
 
 		break;
 
-		case 'tax' :
+		case "subtotal_ex_tax" :
 
-			$values['field'] = 'number';
-
-		break;
-
-		case 'quantity' :
-
-			$values['field'] = 'number';
+			$values["field"] = "number";
 
 		break;
 
-		case 'contains_product' :
+		case "tax" :
 
-			$values['field'] = 'select';
+			$values["field"] = "number";
 
-			$products = get_posts( array( 'posts_per_page' => '-1', 'post_type' => 'product', 'order' => 'asc', 'orderby' => 'title' ) );
-			foreach ( $products as $product ) :
-				$values['options'][ $product->ID ] = $product->post_title;
+		break;
+
+		case "quantity" :
+
+			$values["field"] = "number";
+
+		break;
+
+		case "contains_product" :
+
+			$values["field"] = "select";
+
+			$products = get_posts( array( "posts_per_page" => "-1", "post_type" => "product", "order" => "asc", "orderby" => "title" ) );
+			foreach( $products as $product ) :
+				$values["options"][$product->ID] = $product->post_title;
 			endforeach;
 
 		break;
 
-		case 'coupon' :
+		case "coupon" :
 
-			$values['field'] = 'text';
-
-		break;
-
-		case 'weight' :
-
-			$values['field'] = 'text';
+			$values["field"] = "text";
 
 		break;
 
-		case 'contains_shipping_class' :
+		case "weight" :
 
-			$values['field']       = 'select';
-			$values['options'][''] = __( 'No shipping class', 'woocommerce' );
+			$values["field"] = "text";
+
+		break;
+
+		case "contains_shipping_class" :
+
+			$values["field"]       = "select";
+			$values["options"][""] = __( "No shipping class", "woocommerce" );
 
 			// Get all shipping classes
-			foreach ( get_terms( 'product_shipping_class', array( 'hide_empty' => false ) ) as $shipping_class ) :
-				$values['options'][ $shipping_class->slug ] = $shipping_class->name;
+			foreach( get_terms( "product_shipping_class", array( "hide_empty" => false ) ) as $shipping_class ) :
+				$values["options"][$shipping_class->slug] = $shipping_class->name;
 			endforeach;
 
 		break;
@@ -84,49 +83,49 @@ function wafs_condition_values( $id, $group = 0, $condition = 'subtotal', $curre
 		 * User details
 		 */
 
-		case 'zipcode' :
+		case "zipcode" :
 
-			$values['field'] = 'text';
-
-		break;
-
-		case 'city' :
-
-			$values['field'] = 'text';
+			$values["field"] = "text";
 
 		break;
 
-		case 'state' :
+		case "city" :
 
-			$values['field'] = 'select';
+			$values["field"] = "text";
 
-			foreach ( WC()->countries->states as $country => $states ) :
+		break;
 
-				if ( empty( $states ) ) continue; // Don't show country if it has no states
-				if ( ! array_key_exists( $country, WC()->countries->get_allowed_countries() ) ) continue; // Skip unallowed countries
+		case "state" :
 
-				foreach ( $states as $state_key => $state ) :
-					$country_states[ WC()->countries->countries[ $country ][ $country . '_' . $state_key ] = $state;
+			$values["field"] = "select";
+
+			foreach( WC()->countries->states as $country => $states ) :
+
+				if( empty( $states ) ) continue; // Don't show country if it has no states
+				if( ! array_key_exists( $country, WC()->countries->get_allowed_countries() ) ) continue; // Skip unallowed countries
+
+				foreach( $states as $state_key => $state ) :
+					$country_states[ WC()->countries->countries[$country][ $country . "_" . $state_key ] = $state;
 				endforeach;
 
-				$values['options'] = $country_states;
+				$values["options"] = $country_states;
 
 			endforeach;
 
 		break;
 
-		case 'country' :
+		case "country" :
 
-			$values['field']   = 'select';
-			$values['options'] = WC()->countries->get_allowed_countries();
+			$values["field"]   = "select";
+			$values["options"] = WC()->countries->get_allowed_countries();
 
 		break;
 
-		case 'role' :
+		case "role" :
 
-			$values['field']   = 'select';
+			$values["field"]   = "select";
 			$roles             = array_keys( get_editable_roles() );
-			$values['options'] = array_combine( $roles, $roles );
+			$values["options"] = array_combine( $roles, $roles );
 
 		break;
 
@@ -134,49 +133,49 @@ function wafs_condition_values( $id, $group = 0, $condition = 'subtotal', $curre
 		 * Product
 		 */
 
-		case 'width' :
+		case "width" :
 
-			$values['field'] = 'text';
-
-		break;
-
-
-		case 'height' :
-
-			$values['field'] = 'text';
+			$values["field"] = "text";
 
 		break;
 
 
-		case 'length' :
+		case "height" :
 
-			$values['field'] = 'text';
-
-		break;
-
-		case 'stock' :
-
-			$values['field'] = 'text';
+			$values["field"] = "text";
 
 		break;
 
-		case 'stock_status' :
 
-			$values['field']   = 'select';
-			$values['options'] = array(
-				'instock'    => __( 'In stock', 'woocommerce-advanced-free-shipping' ),
-				'outofstock' => __( 'Out of stock', 'woocommerce-advanced-free-shipping' ),
+		case "length" :
+
+			$values["field"] = "text";
+
+		break;
+
+		case "stock" :
+
+			$values["field"] = "text";
+
+		break;
+
+		case "stock_status" :
+
+			$values["field"]   = "select";
+			$values["options"] = array(
+				"instock"    => __( "In stock", "woocommerce-advanced-free-shipping" ),
+				"outofstock" => __( "Out of stock", "woocommerce-advanced-free-shipping" ),
 			);
 
 		break;
 
-		case 'category' :
+		case "category" :
 
-			$values['field'] = 'select';
+			$values["field"] = "select";
 
-			$categories = get_terms( 'product_cat', array( 'hide_empty' => false ) );
-			foreach ( $categories as $category ) :
-				$values['options'][ $category->slug ] = $category->name;
+			$categories = get_terms( "product_cat", array( "hide_empty" => false ) );
+			foreach( $categories as $category ) :
+				$values["options"][$category->slug] = $category->name;
 			endforeach;
 
 		break;
@@ -184,65 +183,64 @@ function wafs_condition_values( $id, $group = 0, $condition = 'subtotal', $curre
 
 	endswitch;
 
-	$values = apply_filters( 'wafs_values', $values, $condition );
+	$values = apply_filters( "wafs_values", $values, $condition );
 
-	?><span class='wafs-value-wrap wafs-value-wrap-<?php echo absint( $id ); ?>'><?php
+	?><span class='wafs-value-wrap wafs-value-wrap-<?PHP echo absint( $id ); ?>'><?PHP
 
-		switch ( $values['field'] ) :
+		switch( $values["field"] ) :
 
-			case 'text' :
+			case "text" :
 
-				?><input type='text' class='wafs-value' name='_wafs_shipping_method_conditions[<?php echo absint( $group ); ?>][<?php echo absint( $id ); ?>][value]'
-					placeholder='<?php echo esc_attr( @$values['placeholder'] ); ?>' value='<?php echo esc_attr( $current_value ); ?>'><?php
-
-			break;
-
-			case 'number' :
-
-				?><input type='text' class='wafs-value' name='_wafs_shipping_method_conditions[<?php echo absint( $group ); ?>][<?php echo absint( $id ); ?>][value]'
-					min='<?php echo esc_attr( @$values['min'] ); ?>' max='<?php echo esc_attr( @$values['max'] ); ?>' placeholder='<?php echo esc_attr( @$values['placeholder'] ); ?>'
-					value='<?php echo esc_attr( $current_value ); ?>'><?php
+				?><input type='text' class='wafs-value' name='_wafs_shipping_method_conditions[<?PHP echo absint( $group ); ?>][<?PHP echo absint( $id ); ?>][value]'
+					placeholder='<?PHP echo esc_attr( @$values["placeholder"] ); ?>' value='<?PHP echo esc_attr( $current_value ); ?>'><?PHP
 
 			break;
 
-			case 'select' :
+			case "number" :
+
+				?><input type='text' class='wafs-value' name='_wafs_shipping_method_conditions[<?PHP echo absint( $group ); ?>][<?PHP echo absint( $id ); ?>][value]'
+					min='<?PHP echo esc_attr( @$values["min"] ); ?>' max='<?PHP echo esc_attr( @$values["max"] ); ?>' placeholder='<?PHP echo esc_attr( @$values["placeholder"] ); ?>'
+					value='<?PHP echo esc_attr( $current_value ); ?>'><?PHP
+
+			break;
+
+			case "select" :
 
 				// Backwards compatibility for extensions
-				@array_merge( $values['options'], $values['values'] );
-				?><select class='wafs-value' name='_wafs_shipping_method_conditions[<?php echo absint( $group ); ?>][<?php echo absint( $id ); ?>][value]'>
+				@array_merge( $values["options"], $values["values"] );
+				?><select class='wafs-value' name='_wafs_shipping_method_conditions[<?PHP echo absint( $group ); ?>][<?PHP echo absint( $id ); ?>][value]'>
 
-					<option <?php selected( '', $current_value ); ?>><?php _e( 'Select option', 'woocommerce-advanced-free-shipping' ); ?></option><?php
-					foreach ( $values['options'] as $key => $value ) :
+					<option <?PHP selected( "", $current_value ); ?>><?PHP _e( "Select option", "woocommerce-advanced-free-shipping" ); ?></option><?PHP
+					foreach( $values["options"] as $key => $value ) :
 
-						if ( ! is_array( $value ) ) :
-							?><option value='<?php echo esc_attr( $key ); ?>' <?php selected( $key, $current_value ); ?>><?php echo esc_html( $value ); ?></option><?php
+						if( ! is_array( $value ) ) :
+							?><option value='<?PHP echo esc_attr( $key ); ?>' <?PHP selected( $key, $current_value ); ?>><?PHP echo esc_html( $value ); ?></option><?PHP
 						else :
-							?><optgroup label='<?php echo $key; ?>'><?php
-								foreach ( $value as $k => $v ) :
-									?><option value='<?php echo esc_attr( $k ); ?>' <?php selected( $k, $current_value ); ?>><?php echo esc_html( $v ); ?></option><?php
+							?><optgroup label='<?PHP echo $key; ?>'><?PHP
+								foreach( $value as $k => $v ) :
+									?><option value='<?PHP echo esc_attr( $k ); ?>' <?PHP selected( $k, $current_value ); ?>><?PHP echo esc_html( $v ); ?></option><?PHP
 								endforeach;
-							?></optgroup><?php
+							?></optgroup><?PHP
 
 						endif;
 
 					endforeach;
 
-					if ( empty( $values['options'] ) ) :
-						?><option readonly disabled><?php
-							_e( 'There are no options available', 'woocommerce-advanced-free-shipping' );
-						?></option><?php
+					if( empty( $values["options"] ) ) :
+						?><option readonly disabled><?PHP
+							_e( "There are no options available", "woocommerce-advanced-free-shipping" );
+						?></option><?PHP
 					endif;
 
-				?></select><?php
+				?></select><?PHP
 
 			break;
 
 			default :
-				do_action( 'wafs_condition_value_field_type_' . $values['field'], $values );
+				do_action( "wafs_condition_value_field_type_" . $values["field"], $values );
 			break;
 
 		endswitch;
 
-	?></span><?php
-
+	?></span><?PHP
 }

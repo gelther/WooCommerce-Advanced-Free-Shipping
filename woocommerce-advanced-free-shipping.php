@@ -1,4 +1,4 @@
-<?php
+<?PHP
 /*
  * Plugin Name: 	Woocommerce Advanced Free Shipping
  * Plugin URI: 		https://wordpress.org/plugins/woocommerce-advanced-free-shipping/
@@ -29,7 +29,7 @@
  *     along with WordPress. If not, see <http://www.gnu.org/licenses/>.
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if( ! defined( "ABSPATH" ) ) exit; // Exit if accessed directly
 
 /**
  * Class Woocommerce_Advanced_Free_Shipping.
@@ -49,7 +49,7 @@ class WooCommerce_Advanced_Free_Shipping {
 	 * @since 1.0.4
 	 * @var string $version Plugin version number.
 	 */
-	public $version = '1.0.8';
+	public $version = "1.0.8";
 
 
 	/**
@@ -77,20 +77,18 @@ class WooCommerce_Advanced_Free_Shipping {
 	 * @since 1.0.0
 	 */
 	public function __construct() {
-
-		if ( ! function_exists( 'is_plugin_active_for_network' ) ) {
-			require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
+		if( ! function_exists( "is_plugin_active_for_network" ) ) {
+			require_once( ABSPATH . "/wp-admin/includes/plugin.php" );
 		}
 
 		// Check if WooCommerce is active
-		if ( ! in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) :
-			if ( ! is_plugin_active_for_network( 'woocommerce/woocommerce.php' ) ) :
+		if( ! in_array( "woocommerce/woocommerce.php", apply_filters( "active_plugins", get_option( "active_plugins" ) ) ) ) :
+			if( ! is_plugin_active_for_network( "woocommerce/woocommerce.php" ) ) :
 				return;
 			endif;
 		endif;
 
 		$this->init();
-
 	}
 
 
@@ -102,16 +100,14 @@ class WooCommerce_Advanced_Free_Shipping {
 	 *
 	 * @since 1.1.0
 	 *
-	 * @return object Instance of the class.
+	 * @return  object  Instance of the class.
 	 */
 	public static function instance() {
-
-		if ( is_null( self::$instance ) ) {
+		if( is_null( self::$instance ) ) {
 			self::$instance = new self();
 		}
 
 		return self::$instance;
-
 	}
 
 
@@ -123,7 +119,6 @@ class WooCommerce_Advanced_Free_Shipping {
 	 * @since 1.0.0
 	 */
 	public function init() {
-
 		// Add hooks/filters
 		$this->hooks();
 
@@ -136,29 +131,28 @@ class WooCommerce_Advanced_Free_Shipping {
 		/**
 		 * Require matching conditions hooks.
 		 */
-		require_once plugin_dir_path( __FILE__ ) . '/includes/class-wafs-match-conditions.php';
+		require_once plugin_dir_path( __FILE__ ) . "/includes/class-wafs-match-conditions.php";
 		$this->matcher = new Wafs_Match_Conditions();
 
 		/**
 		 * Require file with settings.
 		 */
-		require_once plugin_dir_path( __FILE__ ) . 'includes/class-wafs-post-type.php';
+		require_once plugin_dir_path( __FILE__ ) . "includes/class-wafs-post-type.php";
 		$this->post_type = new WAFS_post_type();
 
 		/**
 		 * Load ajax methods
 		 */
-		require_once plugin_dir_path( __FILE__ ) . '/includes/class-wafs-ajax.php';
+		require_once plugin_dir_path( __FILE__ ) . "/includes/class-wafs-ajax.php";
 		$this->ajax = new WAFS_Ajax();
 
 		/**
 		 * Admin class
 		 */
-		if ( is_admin() ) :
-			require_once plugin_dir_path( __FILE__ ) . '/includes/admin/class-wafs-admin.php';
+		if( is_admin() ) :
+			require_once plugin_dir_path( __FILE__ ) . "/includes/admin/class-wafs-admin.php";
 			$this->admin = new WAFS_Admin();
 		endif;
-
 	}
 
 
@@ -171,27 +165,25 @@ class WooCommerce_Advanced_Free_Shipping {
 	 * @since 1.0.3
 	 */
 	public function update() {
-
-		$db_version = get_option( 'wafs_plugin_version', '1.0.0' );
+		$db_version = get_option( "wafs_plugin_version", "1.0.0" );
 
 		// Stop current version is up to date
-		if ( $db_version >= $this->version ) :
+		if( $db_version >= $this->version ) :
 			return;
 		endif;
 
 		// Update functions for 1.0.3/1.0.5
-		if ( version_compare( '1.0.3', $db_version ) || version_compare( '1.0.5', $db_version ) ) :
+		if( version_compare( "1.0.3", $db_version ) || version_compare( "1.0.5", $db_version ) ) :
 
-			$wafs_method_settings = get_option( 'woocommerce_advanced_free_shipping_settings' );
-			if ( isset( $wafs_method_settings['hide_other_shipping_when_available'] ) ) :
-				$wafs_method_settings['hide_other_shipping'] = $wafs_method_settings['hide_other_shipping_when_available'];
-				update_option( 'woocommerce_advanced_free_shipping_settings', $wafs_method_settings );
+			$wafs_method_settings = get_option( "woocommerce_advanced_free_shipping_settings" );
+			if( isset( $wafs_method_settings["hide_other_shipping_when_available"] ) ) :
+				$wafs_method_settings["hide_other_shipping"] = $wafs_method_settings["hide_other_shipping_when_available"];
+				update_option( "woocommerce_advanced_free_shipping_settings", $wafs_method_settings );
 			endif;
 
 		endif;
 
-		update_option( 'wafs_plugin_version', $this->version );
-
+		update_option( "wafs_plugin_version", $this->version );
 	}
 
 
@@ -203,13 +195,11 @@ class WooCommerce_Advanced_Free_Shipping {
 	 * @since 1.0.0
 	 */
 	public function hooks() {
-
 		// Initialize shipping method class
-		add_action( 'woocommerce_shipping_init', array( $this, 'wafs_free_shipping' ) );
+		add_action( "woocommerce_shipping_init", array( $this, "wafs_free_shipping" ) );
 
 		// Add shipping method
-		add_action( 'woocommerce_shipping_methods', array( $this, 'wafs_add_shipping_method' ) );
-
+		add_action( "woocommerce_shipping_methods", array( $this, "wafs_add_shipping_method" ) );
 	}
 
 
@@ -221,10 +211,8 @@ class WooCommerce_Advanced_Free_Shipping {
 	 * @since 1.1.0
 	 */
 	public function load_textdomain() {
-
 		// Load textdomain
-		load_plugin_textdomain( 'woocommerce-advanced-free-shipping', false, basename( dirname( __FILE__ ) ) . '/languages' );
-
+		load_plugin_textdomain( "woocommerce-advanced-free-shipping", false, basename( dirname( __FILE__ ) ) . "/languages" );
 	}
 
 
@@ -236,13 +224,11 @@ class WooCommerce_Advanced_Free_Shipping {
 	 * @since 1.0.0
 	 */
 	public function wafs_free_shipping() {
-
 		/**
-		 * WAFS shipping method
-		 */
-		require_once plugin_dir_path( __FILE__ ) . 'includes/class-wafs-method.php';
+	 * WAFS shipping method
+	 */
+		require_once plugin_dir_path( __FILE__ ) . "includes/class-wafs-method.php";
 		$this->was_method = new Wafs_Free_Shipping_Method();
-
 	}
 
 
@@ -254,13 +240,11 @@ class WooCommerce_Advanced_Free_Shipping {
 	 * @since 1.0.0
 	 */
 	public function wafs_add_shipping_method( $methods ) {
-
-		if ( class_exists( 'Wafs_Free_Shipping_Method' ) ) :
-			$methods[] = 'Wafs_Free_Shipping_Method';
+		if( class_exists( "Wafs_Free_Shipping_Method" ) ) :
+			$methods[] = "Wafs_Free_Shipping_Method";
 		endif;
 
 		return $methods;
-
 	}
 
 
@@ -272,9 +256,7 @@ class WooCommerce_Advanced_Free_Shipping {
 	 * @since 1.0.0
 	 */
 	public function wafs_admin_enqueue_scripts() {
-
-		_deprecated_function( __FUNCTION__, '1.0.8', 'WAFS()->admin->admin_enqueue_script()' );
-
+		_deprecated_function( __FUNCTION__, "1.0.8", "WAFS()->admin->admin_enqueue_script()" );
 	}
 
 
@@ -286,18 +268,16 @@ class WooCommerce_Advanced_Free_Shipping {
  *
  * Use this function like you would a global variable, except without needing to declare the global.
  *
- * Example: <?php WAFS()->method_name(); ?>
+ * Example: <?PHP WAFS()->method_name(); ?>
  *
  * @since 1.1.0
  *
- * @return object WooCommerce_Advanced_Free_Shipping class object.
+ * @return  object  WooCommerce_Advanced_Free_Shipping class object.
  */
-if ( ! function_exists( 'WAFS' ) ) :
+if( ! function_exists( "WAFS" ) ) :
 
 	function WAFS() {
-
 		return WooCommerce_Advanced_Free_Shipping::instance();
-
 	}
 
 
