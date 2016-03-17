@@ -8,10 +8,10 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *
  * @since 1.0.0
  *
- * @param int    $id            Throw in the condition ID.
- * @param int    $group         Condition group ID.
- * @param string $condition     Condition where the value input is used for.
- * @param string $current_value Current chosen slug.
+ * @param  int     $id             Throw in the condition ID.
+ * @param  int     $group          Condition group ID.
+ * @param  string  $condition      Condition where the value input is used for.
+ * @param  string  $current_value  Current chosen slug.
  */
 function wafs_condition_values( $id, $group = 0, $condition = 'subtotal', $current_value = '' ) {
 

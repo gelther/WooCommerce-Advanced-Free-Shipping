@@ -8,9 +8,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *
  * @since 1.0.0
  *
- * @param mixed  $id            Throw in the condition ID.
- * @param midex  $group         Condition group ID.
- * @param string $current_value Current chosen slug.
+ * @param  mixed   $id             Throw in the condition ID.
+ * @param  midex   $group          Condition group ID.
+ * @param  string  $current_value  Current chosen slug.
  */
 function wafs_condition_conditions( $id, $group = 0, $current_value = 'subtotal' ) {
 

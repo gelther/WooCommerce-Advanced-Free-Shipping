@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *
  * @since 1.0.0
  *
- * @param string $condition Condition to show description for.
+ * @param  string  $condition  Condition to show description for.
  */
 function wafs_condition_description( $condition ) {
 
