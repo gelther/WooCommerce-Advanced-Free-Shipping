@@ -13,7 +13,7 @@ php:
     function_parentheses_inner_whitespace: whitespace
     indentation_whitespace: tab
     opening_doc_asterisk: double
-    php_tag_casing: lower
+    php_tag_casing: upper
     php_tags: full_php_tags
     remove_double_semicolon: remove
     remove_empty_trailing_leading_doc_lines: remove
@@ -24,16 +24,16 @@ php:
     true_false_casing: lower
     type_cast_casing: lower
     type_cast_inner_whitespace: no_space
-    use_quotes: single_quotes
-    variable_array_index_whitespace: whitespace
-    whitespace_after_control_structure: whitespace
+    use_quotes: double_quotes
+    variable_array_index_whitespace: no_space
+    whitespace_after_control_structure: no_space
     whitespace_after_doc_asterisk: single_space
     whitespace_after_else: space
-    whitespace_after_function_open: newline
+    whitespace_after_function_open: no_space
     whitespace_after_function: double_newline
     whitespace_before_control_structure_brace: space
     whitespace_before_doc_asterisk: space
     whitespace_before_else: space
     whitespace_before_function_brace: space
-    whitespace_before_function_close: newline
+    whitespace_before_function_close: no_space
     whitespace_before_function_parentheses: no_space
